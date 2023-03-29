@@ -94,11 +94,13 @@ sudo systemctl restart docker
 sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
 ```
 
-Now we can launch AIRVO Docker
+Now we can launch AIRVO Docker on MCDVIRAL with the provided script
 
 ```bash
-docker pull xukuanhit/air_slam:v1
-docker run -it --env DISPLAY=$DISPLAY --volume /tmp/.X11-unix:/tmp/.X11-unix --privileged --runtime nvidia --gpus all --volume ${PWD}:/workspace --workdir /workspace --name air_slam xukuanhit/air_slam:v1 /bin/bash
+
+roscd air_vo/docker;
+bash run_mcdviral.sh # Remember to open the script and change the path to the dataset. A python script is provided to convert rosbag to asl format
+
 ```
 
 ## Data
